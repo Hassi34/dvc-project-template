@@ -12,7 +12,7 @@ STAGE = "STAGE_NAME" ## <<< change stage name
 logging.basicConfig(
     filename=os.path.join("logs", 'running_logs.log'), 
     level=logging.INFO, 
-    format="[%(asctime)s - %(levelname)s - %(name)s - %(module)s] : %(message)s",
+    format="[%(asctime)s - %(levelname)s - %(name)s - %(module)s - %(lineno)s] : %(message)s",
     filemode="a"
     )
 
@@ -32,9 +32,9 @@ if __name__ == '__main__':
 
     try:
         logging.info("\n********************")
-        logging.info(f">>>>> stage {STAGE} started <<<<<")
+        logging.info(f'>>>>> stage "{STAGE}" started <<<<<')
         main(config_path=parsed_args.config, params_path=parsed_args.params)
-        logging.info(f">>>>> stage {STAGE} completed!<<<<<\n")
+        logging.info(f'>>>>> stage "{STAGE}" completed!<<<<<\n')
     except Exception as e:
         logging.exception(e)
         raise e
